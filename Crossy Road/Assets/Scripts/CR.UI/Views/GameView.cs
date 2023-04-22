@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameView : MonoBehaviour
+public class GameView : BaseView
 {
 	
 }
