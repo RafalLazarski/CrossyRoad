@@ -1,3 +1,4 @@
+using CR.Data;
 using CR.UI;
 using UnityEngine;
 
@@ -9,10 +10,16 @@ namespace CR.Core
 
         [SerializeField]
         private MenuView menuView;
-        public MenuView MenuView => menuView; // {get { return menuView }}
+        public MenuView MenuView => menuView;
+
+        private SaveSystem saveSystem;
+        public SaveSystem SaveSystem => saveSystem;
 
         private void Start()
         {
+            saveSystem = new SaveSystem();
+            saveSystem.LoadData();
+
             ChangeState(new MenuState());
         }
 
@@ -23,8 +30,7 @@ namespace CR.Core
 
         private void OnDestroy()
         {
-            // ChangeState(null);
-            // some method to save game before shut down
+            saveSystem.SaveData();
         }
 
         public void ChangeState(BaseState newState)
