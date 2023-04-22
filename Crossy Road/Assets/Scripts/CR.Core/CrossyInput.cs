@@ -39,7 +39,7 @@ namespace CR.InputSystem
             }
         }
 
-		public void ClearAllInputs(CallbackContext ctx)
+		public void ClearAllInputs()
 		{
 			isMovePressed = null;
 			isPausePressed = null;

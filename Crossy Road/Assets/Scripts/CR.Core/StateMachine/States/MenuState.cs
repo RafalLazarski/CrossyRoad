@@ -7,19 +7,27 @@ namespace CR.Core
         public override void Init(GameController gameController)
         {
             base.Init(gameController);
-            //gameController.MenuView.StartButton.onClick.AddListener(() => gameController.ChangeState(new GameState()));
             gameController.MenuView.ShowView();
+            gameController.CrossyInput.isStartPressed += StartGame;
         }
 
         public override void DestroyState()
         {
             gameController.MenuView.HideView();
-            //gameController.MenuView.StartButton.onClick.RemoveAllListeners();
+            gameController.CrossyInput.ClearAllInputs();
         }
 
         public override void Tick()
         {
 
+        }
+
+        private void StartGame(bool isPressed)
+        {
+            if(isPressed)
+            {
+                gameController.ChangeState(new GameState());
+            }
         }
     }
 }

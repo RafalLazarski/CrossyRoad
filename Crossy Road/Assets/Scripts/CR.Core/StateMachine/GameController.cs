@@ -1,4 +1,5 @@
 using CR.Data;
+using CR.InputSystem;
 using CR.UI;
 using UnityEngine;
 
@@ -14,6 +15,11 @@ namespace CR.Core
 
         private SaveSystem saveSystem;
         public SaveSystem SaveSystem => saveSystem;
+
+        [SerializeField]
+        private CrossyInput crossyInput;
+        public CrossyInput CrossyInput => crossyInput;
+
 
         private void Start()
         {
