@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class GameView : BaseView
+namespace CR.UI
 {
-	
+	public class GameView : BaseView
+	{
+
+	} 
 }
