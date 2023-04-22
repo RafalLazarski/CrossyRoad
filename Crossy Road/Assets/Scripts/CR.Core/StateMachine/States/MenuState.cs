@@ -19,7 +19,7 @@ namespace CR.Core
 
         public override void Tick()
         {
-            Debug.Log("Menu State is on");
+
         }
     }
 }
