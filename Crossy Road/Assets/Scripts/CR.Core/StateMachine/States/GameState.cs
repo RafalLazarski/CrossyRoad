@@ -8,6 +8,7 @@ namespace CR.Core
         public override void Init(GameController gameController)
         {
             base.Init(gameController);
+            gameController.LevelSpawner.Init(2);
         }
 
         public override void DestroyState()

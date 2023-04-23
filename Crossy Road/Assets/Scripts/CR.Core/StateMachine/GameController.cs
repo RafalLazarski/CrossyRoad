@@ -20,13 +20,18 @@ namespace CR.Core
         private CrossyInput crossyInput;
         public CrossyInput CrossyInput => crossyInput;
 
+        [SerializeField]
+        private LevelSpawner levelSpawner;
+        public LevelSpawner LevelSpawner => levelSpawner;
+
 
         private void Start()
         {
             saveSystem = new SaveSystem();
             saveSystem.LoadData();
 
-            ChangeState(new MenuState());
+            //ChangeState(new MenuState());
+            ChangeState(new GameState());
         }
 
         private void Update()
