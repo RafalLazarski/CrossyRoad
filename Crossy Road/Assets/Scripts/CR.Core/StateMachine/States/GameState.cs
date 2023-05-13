@@ -9,6 +9,9 @@ namespace CR.Core
         {
             base.Init(gameController);
             gameController.LevelSpawner.Init(2);
+            gameController.CarSpawner.InitSpawner();
+            gameController.CarSpawner.SpawnCars();
+
             gameController.CrossyInput.isPausePressed += test;
         }
 

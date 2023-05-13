@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelSpawner : MonoBehaviour
 {
 	[SerializeField]
-	private VehicleSpawner vehicleSpawner;
+	private CarSpawner carSpawner; 
 
 	[SerializeField]
 	private LanesBundle[] lanesBundles;
@@ -45,7 +45,7 @@ public class LevelSpawner : MonoBehaviour
 
                     if (obj is ISpawnable spawnable)
 					{
-						vehicleSpawner.Subscribe(spawnable);
+						carSpawner.Subscribe(spawnable);
 					}
                 }                
             }
@@ -64,7 +64,7 @@ public class LevelSpawner : MonoBehaviour
 
                     if (obj is ISpawnable spawnable)
                     {
-                        vehicleSpawner.Subscribe(spawnable);
+                        carSpawner.Subscribe(spawnable);
                     }
                 }
             }
@@ -78,7 +78,7 @@ public class LevelSpawner : MonoBehaviour
 
                     if (obj is ISpawnable spawnable)
                     {
-                        vehicleSpawner.Subscribe(spawnable);
+                        carSpawner.Subscribe(spawnable);
                     }
                 }
             }
