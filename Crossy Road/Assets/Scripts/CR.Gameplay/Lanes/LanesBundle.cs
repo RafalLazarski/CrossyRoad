@@ -10,10 +10,17 @@ namespace CR.Gameplay
 		Track
 	}
 
+	public enum LaneDirection
+	{
+		Right,
+		Left
+	}
+
 	[Serializable]
 	public class LaneData
 	{
 		public LaneType Type;
+		public LaneDirection Direction;
 		[Min(1)]
 		public int Count;
 	}

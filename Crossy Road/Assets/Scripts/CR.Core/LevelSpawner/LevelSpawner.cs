@@ -55,6 +55,8 @@ public class LevelSpawner : MonoBehaviour
 				{
 					var obj = roadLanePool.GetFromPool(this.transform.position);
 
+					obj.SetDirection(item.Direction);
+
                     if (i == item.Count - 1)
                     {
                         obj.DisableRectangles();
@@ -73,6 +75,8 @@ public class LevelSpawner : MonoBehaviour
 				for (int i = 0; i < item.Count; i++)
 				{
 					var obj = trackLanePool.GetFromPool(this.transform.position);
+
+                    obj.SetDirection(item.Direction);
 
                     this.transform.position += Vector3.forward * 5;
 

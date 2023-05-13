@@ -10,6 +10,9 @@ namespace CR.Core
         [SerializeField]
         private NormalCarPool normalCarPool;
 
+        [SerializeField]
+        private float force = 10;
+
 		private List<ISpawnable> lanesInGame = new List<ISpawnable>();
 
         public void InitSpawner()
@@ -22,6 +25,10 @@ namespace CR.Core
             foreach (var lane in lanesInGame)
             {
                 var car = normalCarPool.GetFromPool(lane.GetSpawnPoint());
+
+                car.transform.rotation = lane.GetSpawnRotation();
+
+                car.StartMovement();
             }
 
         }

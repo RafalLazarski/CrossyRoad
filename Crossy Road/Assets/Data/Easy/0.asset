@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanes:
   - Type: 1
+    Direction: 1
     Count: 2
   - Type: 2
+    Direction: 1
     Count: 1
   - Type: 0
+    Direction: 0
     Count: 2
   - Type: 1
+    Direction: 0
     Count: 3
   - Type: 0
+    Direction: 0
     Count: 1

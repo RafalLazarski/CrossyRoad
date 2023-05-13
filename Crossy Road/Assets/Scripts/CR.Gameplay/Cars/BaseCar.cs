@@ -1,17 +1,28 @@
+using System.Xml.Schema;
 using UnityEngine;
 
 namespace CR.Gameplay
 {
     public class BaseCar : MonoBehaviour, IPoolable
     {
-        public virtual void PrepareForActivate()
-        {
+        [SerializeField]
+        private Rigidbody carRb;
 
+        [SerializeField]
+        private float speed = 10;
+
+        public void StartMovement()
+        {
+            carRb.AddForce(this.transform.forward * speed, ForceMode.Impulse);
         }
 
-        public virtual void PrepareForDeactivate()
-        {
 
+        public void PrepareForActivate()
+        {
+        }
+
+        public void PrepareForDeactivate()
+        {
         }
     }
 }
