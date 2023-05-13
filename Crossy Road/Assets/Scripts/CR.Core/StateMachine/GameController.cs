@@ -24,14 +24,18 @@ namespace CR.Core
         private LevelSpawner levelSpawner;
         public LevelSpawner LevelSpawner => levelSpawner;
 
+        [SerializeField]
+        private VehicleSpawner vehicleSpawner;
+        public VehicleSpawner VehicleSpawner => vehicleSpawner;
+
 
         private void Start()
         {
             saveSystem = new SaveSystem();
             saveSystem.LoadData();
 
-            //ChangeState(new MenuState());
-            ChangeState(new GameState());
+            ChangeState(new MenuState());
+            //ChangeState(new GameState());
         }
 
         private void Update()

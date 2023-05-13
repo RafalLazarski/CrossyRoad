@@ -9,6 +9,7 @@ namespace CR.Core
         {
             base.Init(gameController);
             gameController.LevelSpawner.Init(2);
+            gameController.CrossyInput.isPausePressed += test;
         }
 
         public override void DestroyState()
@@ -19,6 +20,14 @@ namespace CR.Core
         public override void Tick()
         {
 
+        }
+
+        public void test(bool isPressed)
+        {
+            if (isPressed)
+            {
+                Debug.Log("Dzia³a");
+            }
         }
     }
 }

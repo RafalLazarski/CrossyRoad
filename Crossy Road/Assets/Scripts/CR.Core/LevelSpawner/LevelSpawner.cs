@@ -1,9 +1,13 @@
+using CR.Core;
 using CR.Gameplay;
 using CR.Pooling;
 using UnityEngine;
 
 public class LevelSpawner : MonoBehaviour
 {
+	[SerializeField]
+	private VehicleSpawner vehicleSpawner;
+
 	[SerializeField]
 	private LanesBundle[] lanesBundles;
 	[SerializeField]
@@ -36,6 +40,13 @@ public class LevelSpawner : MonoBehaviour
 				{
                     var obj = greenLanePool.GetFromPool(this.transform.position);
 					obj.SetColor(i);
+
+                    this.transform.position += Vector3.forward * 5;
+
+                    if (obj is ISpawnable spawnable)
+					{
+						vehicleSpawner.Subscribe(spawnable);
+					}
                 }                
             }
 			else if(item.Type == LaneType.Road)
@@ -43,16 +54,35 @@ public class LevelSpawner : MonoBehaviour
 				for (int i = 0; i < item.Count; i++)
 				{
 					var obj = roadLanePool.GetFromPool(this.transform.position);
-				}
+
+                    if (i == item.Count - 1)
+                    {
+                        obj.DisableRectangles();
+                    }
+
+                    this.transform.position += Vector3.forward * 5;
+
+                    if (obj is ISpawnable spawnable)
+                    {
+                        vehicleSpawner.Subscribe(spawnable);
+                    }
+                }
             }
 			else if(item.Type == LaneType.Track)
 			{
 				for (int i = 0; i < item.Count; i++)
 				{
 					var obj = trackLanePool.GetFromPool(this.transform.position);
-				}
+
+                    this.transform.position += Vector3.forward * 5;
+
+                    if (obj is ISpawnable spawnable)
+                    {
+                        vehicleSpawner.Subscribe(spawnable);
+                    }
+                }
             }
-            this.transform.position += Vector3.forward * 5;
+            
         }
 	}
 
