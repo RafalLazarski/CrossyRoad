@@ -27,6 +27,7 @@ where TItem : MonoBehaviour, IPoolable
 		private TItem SpawnNewObject()
 		{
 			var newObj = Instantiate(originalPrefab, Vector3.zero, Quaternion.identity, this.transform);
+			newObj.gameObject.SetActive(false);
 			return newObj;
 		}
 
