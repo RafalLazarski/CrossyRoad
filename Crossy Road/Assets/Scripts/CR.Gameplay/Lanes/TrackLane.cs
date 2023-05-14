@@ -7,12 +7,12 @@ namespace CR.Gameplay
     {
         public Vector3 GetSpawnPoint()
         {
-            throw new NotImplementedException();
+            return GetSpawnPointPosition();
         }
 
         public Quaternion GetSpawnRotation()
         {
-            throw new NotImplementedException();
+            return GetSpawnPointRotation();
         }
     }
 }
