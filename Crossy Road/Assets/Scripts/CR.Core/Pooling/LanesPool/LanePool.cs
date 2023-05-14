@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CR.Pooling
 {
-	public class TrackLanePool : Pool<TrackLane>
+	public class LanePool : Pool<BaseLane>
 	{
 
 	} 

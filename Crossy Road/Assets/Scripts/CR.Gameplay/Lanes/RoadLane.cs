@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CR.Gameplay
@@ -5,49 +6,22 @@ namespace CR.Gameplay
 	public class RoadLane : BaseLane, ISpawnable
 	{
         [SerializeField]
-        private Transform[] spawnPoint;
-
-        [SerializeField]
-        private GameObject whiteLines;
-
-        [SerializeField]
-        private Vector2 timeFrame;
-
-        private LaneDirection direction;
+        private GameObject[] whiteRectangles;
 
         public Vector3 GetSpawnPoint()
         {
-            return spawnPoint[(int)direction].position;
+            throw new NotImplementedException();
         }
 
         public Quaternion GetSpawnRotation()
         {
-            return spawnPoint[(int)direction].rotation;
-        }
-
-        public Vector2 GetTimeFrame()
-        {
-            return timeFrame;
-        }
-
-        public void SetDirection(LaneDirection direction)
-        {
-            this.direction = direction;
+            throw new NotImplementedException();
         }
 
         public override void PrepareForActivate()
         {
-            base.PrepareForActivate();
+            foreach (var rect in whiteRectangles)
+                rect.SetActive(enableAdditionalObjects);
         }
-
-        public override void PrepareForDeactivate()
-        {
-            base.PrepareForDeactivate();
-        }
-
-        public void DisableRectangles()
-        {
-            whiteLines.SetActive(false);
-        }
-    } 
+    }
 }

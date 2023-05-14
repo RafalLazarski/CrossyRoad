@@ -21,13 +21,12 @@ namespace CR.Gameplay
 	{
 		public LaneType Type;
 		public LaneDirection Direction;
-		[Min(1)]
-		public int Count;
-	}
+        public bool enableAdditionalObjects;
+    }
 
-	[CreateAssetMenu(menuName = "Bundle/new bundle")]
+    [CreateAssetMenu(menuName = "Bundle/new bundle")]
 	public class LanesBundle : ScriptableObject
 	{
 		public LaneData[] lanes;
-	} 
+	}
 }

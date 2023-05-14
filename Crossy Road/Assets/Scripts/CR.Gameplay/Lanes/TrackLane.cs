@@ -1,45 +1,18 @@
+using System;
 using UnityEngine;
 
 namespace CR.Gameplay
 {
-	public class TrackLane : BaseLane, ISpawnable
-	{
-        [SerializeField]
-        private Transform[] spawnPoint;
-
-        [SerializeField]
-        private Vector2 timeFrame;
-
-        private LaneDirection direction;
-
+    public class TrackLane : BaseLane, ISpawnable
+    {
         public Vector3 GetSpawnPoint()
         {
-            return spawnPoint[(int)direction].position;
+            throw new NotImplementedException();
         }
 
         public Quaternion GetSpawnRotation()
         {
-            return spawnPoint[(int)direction].rotation;
+            throw new NotImplementedException();
         }
-
-        public void SetDirection(LaneDirection direction)
-        {
-            this.direction = direction;
-        }
-
-        public Vector2 GetTimeFrame()
-        {
-            return timeFrame;
-        }
-
-        public override void PrepareForActivate()
-        {
-            base.PrepareForActivate();
-        }
-
-        public override void PrepareForDeactivate()
-        {
-            base.PrepareForDeactivate();
-        }
-    } 
+    }
 }

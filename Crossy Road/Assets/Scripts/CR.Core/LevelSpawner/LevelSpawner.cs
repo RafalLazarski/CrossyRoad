@@ -9,85 +9,87 @@ public class LevelSpawner : MonoBehaviour
 	private CarSpawner carSpawner; 
 
 	[SerializeField]
-	private LanesBundle[] lanesBundles;
-	[SerializeField]
-	private GreenLanePool greenLanePool;
-	[SerializeField]
-	private RoadLanePool roadLanePool;
-	[SerializeField]
-	private TrackLanePool trackLanePool;
+	private LanesBundle[] bundles;
+    [SerializeField]
+    private LanePool greenLanePool;
+    [SerializeField]
+    private LanePool roadLanePool;
+    [SerializeField]
+    private LanePool trackLanePool;
 
-	public void Init(int startLanes)
+    private int greenCounter;
+
+    private LanesBundle currentBundle;
+    private int lastBundleLaneIndex;
+
+
+    public void Init(int startBundles)
 	{
-		for(var i = 0; i < startLanes; i++)
-		{
-			greenLanePool.Init(2);
-			roadLanePool.Init(2);
-			trackLanePool.Init(2);
-			SpawnBundle();
-		}
-	}
+        greenLanePool.Init(20);
+        roadLanePool.Init(20);
+        trackLanePool.Init(20);
 
-	private void SpawnBundle()
-	{
-		var bundle = lanesBundles[Random.Range(0, lanesBundles.Length)];
+        for (var i = 0; i < startBundles; ++i)
+            SpawnLaneBundle();
+    }
 
-		foreach(var item in bundle.lanes)
-		{
-			if(item.Type == LaneType.Green)
-			{
-				for(int i = 0; i < item.Count; i++)
-				{
-                    var obj = greenLanePool.GetFromPool(this.transform.position);
-					obj.SetColor(i);
+    private void SetNewBundle()
+    {
+        lastBundleLaneIndex = 0;
+        currentBundle = bundles[Random.Range(0, bundles.Length)];
+    }
 
-                    this.transform.position += Vector3.forward * 5;
-
-                    if (obj is ISpawnable spawnable)
-					{
-						carSpawner.Subscribe(spawnable);
-					}
-                }                
-            }
-			else if(item.Type == LaneType.Road)
-			{
-				for (int i = 0; i < item.Count; i++)
-				{
-					var obj = roadLanePool.GetFromPool(this.transform.position);
-
-					obj.SetDirection(item.Direction);
-
-                    if (i == item.Count - 1)
-                    {
-                        obj.DisableRectangles();
-                    }
-
-                    this.transform.position += Vector3.forward * 5;
-
-                    if (obj is ISpawnable spawnable)
-                    {
-                        carSpawner.Subscribe(spawnable);
-                    }
-                }
-            }
-			else if(item.Type == LaneType.Track)
-			{
-				for (int i = 0; i < item.Count; i++)
-				{
-					var obj = trackLanePool.GetFromPool(this.transform.position);
-
-                    obj.SetDirection(item.Direction);
-
-                    this.transform.position += Vector3.forward * 5;
-
-                    if (obj is ISpawnable spawnable)
-                    {
-                        carSpawner.Subscribe(spawnable);
-                    }
-                }
-            }
-            
+    private LanePool GetPool(LaneType laneType)
+    {
+        switch (laneType)
+        {
+            case LaneType.Green:
+                return greenLanePool;
+            case LaneType.Road:
+                return roadLanePool;
+            case LaneType.Track:
+                return trackLanePool;
         }
-	}
+        return null;
+    }
+
+
+    private void ReturnLane(BaseLane lane, LaneType type)
+    {
+        var pool = GetPool(type);
+        pool.ReturnToPool(lane);
+
+        if (lane is ISpawnable spawnable)
+        {
+            carSpawner.Unsubscribe(spawnable);
+        }
+    }
+
+
+    private void SpawnLaneBundle()
+    {
+        SetNewBundle();
+        foreach (var item in currentBundle.lanes)
+        {
+            var pool = GetPool(item.Type);
+
+            var obj = pool.GetFromPool(this.transform.position);
+            this.transform.position += Vector3.forward * 5;
+            obj.SetDirection(item.Direction);
+            obj.AddListener((lane) => ReturnLane(lane, item.Type));
+            obj.SetAdditionalObjectsState(item.enableAdditionalObjects);
+
+            if(item.Type == LaneType.Green)
+            {
+                greenCounter++;
+                obj.SetColor(greenCounter);
+            }
+
+            if(obj is ISpawnable spawnable)
+            {
+                carSpawner.Subscribe(spawnable);
+            }
+        }
+    }
 
 }
