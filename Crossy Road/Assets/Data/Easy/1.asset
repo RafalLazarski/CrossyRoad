@@ -21,10 +21,10 @@ MonoBehaviour:
     Count: 1
   - Type: 0
     Direction: 1
-    Count: 2
+    Count: 1
   - Type: 2
     Direction: 1
-    Count: 3
+    Count: 1
   - Type: 1
     Direction: 0
-    Count: 2
+    Count: 1

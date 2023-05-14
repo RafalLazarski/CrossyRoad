@@ -1,4 +1,5 @@
 using CR.Data;
+using CR.Gameplay;
 using CR.InputSystem;
 using CR.UI;
 using UnityEngine;
@@ -27,6 +28,10 @@ namespace CR.Core
         [SerializeField]
         private CarSpawner carSpawner;
         public CarSpawner CarSpawner => carSpawner;
+
+        [SerializeField]
+        private CameraMovementController cameraController;
+        public CameraMovementController CameraController => cameraController;
 
 
         private void Start()

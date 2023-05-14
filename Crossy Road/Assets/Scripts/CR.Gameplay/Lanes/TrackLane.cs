@@ -7,6 +7,9 @@ namespace CR.Gameplay
         [SerializeField]
         private Transform[] spawnPoint;
 
+        [SerializeField]
+        private Vector2 timeFrame;
+
         private LaneDirection direction;
 
         public Vector3 GetSpawnPoint()
@@ -22,6 +25,11 @@ namespace CR.Gameplay
         public void SetDirection(LaneDirection direction)
         {
             this.direction = direction;
+        }
+
+        public Vector2 GetTimeFrame()
+        {
+            return timeFrame;
         }
 
         public override void PrepareForActivate()

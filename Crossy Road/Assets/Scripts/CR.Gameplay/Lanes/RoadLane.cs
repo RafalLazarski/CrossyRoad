@@ -10,6 +10,9 @@ namespace CR.Gameplay
         [SerializeField]
         private GameObject whiteLines;
 
+        [SerializeField]
+        private Vector2 timeFrame;
+
         private LaneDirection direction;
 
         public Vector3 GetSpawnPoint()
@@ -20,6 +23,11 @@ namespace CR.Gameplay
         public Quaternion GetSpawnRotation()
         {
             return spawnPoint[(int)direction].rotation;
+        }
+
+        public Vector2 GetTimeFrame()
+        {
+            return timeFrame;
         }
 
         public void SetDirection(LaneDirection direction)

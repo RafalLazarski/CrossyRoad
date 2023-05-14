@@ -22,7 +22,7 @@ namespace CR.Core
 
         public override void Tick()
         {
-
+            gameController.CameraController.MoveCamera();
         }
 
         public void test(bool isPressed)
