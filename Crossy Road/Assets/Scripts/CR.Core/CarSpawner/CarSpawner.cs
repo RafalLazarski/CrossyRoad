@@ -21,15 +21,6 @@ namespace CR.Core
             normalCarPool.Init(10);
         }
 
-        public void SpawnCars()
-        {
-            foreach (var lane in lanesInGame)
-            {
-                var coroutine = StartCoroutine(SpawnCarsLoop(lane));
-                laneToCoroutineDic.Add(lane, coroutine);
-            }
-        }
-
         public IEnumerator SpawnCarsLoop(ISpawnable lane)
         {    
             while (true)
@@ -61,15 +52,24 @@ namespace CR.Core
             {
                 lanesInGame.Add(item);
             }
+
+            if (!laneToCoroutineDic.ContainsKey(item))
+            {
+                var coroutine = StartCoroutine(SpawnCarsLoop(item));
+                laneToCoroutineDic.Add(item, coroutine); 
+            }
         }
 
         public void Unsubscribe(ISpawnable item)
         {
             if (lanesInGame.Contains(item))
             {
-                StopCoroutine(laneToCoroutineDic[item]);
-                laneToCoroutineDic.Remove(item);    
-                lanesInGame.Remove(item);
+                if(laneToCoroutineDic.ContainsKey(item))
+                {
+                    StopCoroutine(laneToCoroutineDic[item]);
+                    laneToCoroutineDic.Remove(item);
+                }
+                lanesInGame.Remove(item); 
             }
         }
     } 

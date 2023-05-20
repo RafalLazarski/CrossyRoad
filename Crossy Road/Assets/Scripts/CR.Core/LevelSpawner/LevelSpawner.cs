@@ -20,7 +20,7 @@ public class LevelSpawner : MonoBehaviour
     private int greenCounter;
 
     private LanesBundle currentBundle;
-    private int lastBundleLaneIndex;
+    private int nextBundleLaneIndex;
 
 
     public void Init(int startBundles)
@@ -35,7 +35,7 @@ public class LevelSpawner : MonoBehaviour
 
     private void SetNewBundle()
     {
-        lastBundleLaneIndex = 0;
+        nextBundleLaneIndex = 0;
         currentBundle = bundles[Random.Range(0, bundles.Length)];
     }
 
@@ -63,6 +63,37 @@ public class LevelSpawner : MonoBehaviour
         {
             carSpawner.Unsubscribe(spawnable);
         }
+
+        if(nextBundleLaneIndex == currentBundle.lanes.Length)
+        {
+            SetNewBundle();
+        }
+
+        var laneData = currentBundle.lanes[nextBundleLaneIndex++];
+        SpawnLane(laneData);
+    }
+
+    private void SpawnLane(LaneData item)
+    {
+        var pool = GetPool(item.Type);
+
+        var obj = pool.GetFromPool(this.transform.position);
+        this.transform.position += Vector3.forward * 5;
+        obj.SetDirection(item.Direction);
+        obj.AddListener((lane) => ReturnLane(lane, item.Type));
+        obj.SetAdditionalObjectsState(item.enableAdditionalObjects);
+        obj.RefreshObjectState();
+
+        if (item.Type == LaneType.Green)
+        {
+            greenCounter++;
+            obj.SetColor(greenCounter);
+        }
+
+        if (obj is ISpawnable spawnable)
+        {
+            carSpawner.Subscribe(spawnable);
+        }
     }
 
 
@@ -71,25 +102,7 @@ public class LevelSpawner : MonoBehaviour
         SetNewBundle();
         foreach (var item in currentBundle.lanes)
         {
-            var pool = GetPool(item.Type);
-
-            var obj = pool.GetFromPool(this.transform.position);
-            this.transform.position += Vector3.forward * 5;
-            obj.SetDirection(item.Direction);
-            obj.AddListener((lane) => ReturnLane(lane, item.Type));
-            obj.SetAdditionalObjectsState(item.enableAdditionalObjects);
-            obj.RefreshObjectState();
-
-            if(item.Type == LaneType.Green)
-            {
-                greenCounter++;
-                obj.SetColor(greenCounter);
-            }
-
-            if(obj is ISpawnable spawnable)
-            {
-                carSpawner.Subscribe(spawnable);
-            }
+            SpawnLane(item);   
         }
     }
 

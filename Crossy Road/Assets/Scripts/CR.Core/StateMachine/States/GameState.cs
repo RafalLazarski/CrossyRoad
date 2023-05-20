@@ -8,9 +8,8 @@ namespace CR.Core
         public override void Init(GameController gameController)
         {
             base.Init(gameController);
-            gameController.LevelSpawner.Init(2);
             gameController.CarSpawner.InitSpawner();
-            gameController.CarSpawner.SpawnCars();
+            gameController.LevelSpawner.Init(2);
 
             gameController.CrossyInput.isPausePressed += test;
         }
