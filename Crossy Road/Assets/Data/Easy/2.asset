@@ -15,16 +15,43 @@ MonoBehaviour:
   lanes:
   - Type: 1
     Direction: 0
-    Count: 1
+    enableAdditionalObjects: 0
   - Type: 0
     Direction: 1
-    Count: 1
+    enableAdditionalObjects: 0
   - Type: 2
     Direction: 1
-    Count: 1
-  - Type: 0
+    enableAdditionalObjects: 0
+  - Type: 1
     Direction: 0
-    Count: 1
+    enableAdditionalObjects: 1
   - Type: 1
     Direction: 1
-    Count: 1
+    enableAdditionalObjects: 1
+  - Type: 1
+    Direction: 1
+    enableAdditionalObjects: 1
+  - Type: 1
+    Direction: 0
+    enableAdditionalObjects: 1
+  - Type: 1
+    Direction: 1
+    enableAdditionalObjects: 1
+  - Type: 1
+    Direction: 1
+    enableAdditionalObjects: 1
+  - Type: 1
+    Direction: 0
+    enableAdditionalObjects: 0
+  - Type: 2
+    Direction: 0
+    enableAdditionalObjects: 0
+  - Type: 2
+    Direction: 0
+    enableAdditionalObjects: 0
+  - Type: 0
+    Direction: 0
+    enableAdditionalObjects: 0
+  - Type: 2
+    Direction: 1
+    enableAdditionalObjects: 0

@@ -78,6 +78,7 @@ public class LevelSpawner : MonoBehaviour
             obj.SetDirection(item.Direction);
             obj.AddListener((lane) => ReturnLane(lane, item.Type));
             obj.SetAdditionalObjectsState(item.enableAdditionalObjects);
+            obj.RefreshObjectState();
 
             if(item.Type == LaneType.Green)
             {

@@ -83,5 +83,10 @@ namespace CR.Gameplay
             meshRenderer.material.color = count % 2 == 0 ? baseColor : alternativeColor;
         }
 
+        public virtual void RefreshObjectState()
+        {
+
+        }
+
     }
 }

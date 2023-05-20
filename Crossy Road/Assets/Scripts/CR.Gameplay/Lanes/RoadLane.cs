@@ -21,6 +21,12 @@ namespace CR.Gameplay
         public override void PrepareForActivate()
         {
             foreach (var rect in whiteRectangles)
+                rect.SetActive(false);
+        }
+
+        public override void RefreshObjectState()
+        {
+            foreach (var rect in whiteRectangles)
                 rect.SetActive(enableAdditionalObjects);
         }
     }

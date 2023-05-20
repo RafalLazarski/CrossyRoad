@@ -825,7 +825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpawner: {fileID: 1973218913}
   bundles:
-  - {fileID: 11400000, guid: feb9c09beb436b646982b9f5c377e59b, type: 2}
+  - {fileID: 11400000, guid: d28fdaf17e563be4387d9227bccb1932, type: 2}
   greenLanePool: {fileID: 682262033}
   roadLanePool: {fileID: 449162120}
   trackLanePool: {fileID: 811022964}
