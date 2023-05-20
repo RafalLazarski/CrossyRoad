@@ -9,10 +9,12 @@ namespace CR.Core
 {
 	public class CarSpawner : MonoBehaviour
 	{
+
         [SerializeField]
         private NormalCarPool normalCarPool;
 
 		private List<ISpawnable> lanesInGame = new List<ISpawnable>();
+        private Dictionary<ISpawnable, Coroutine> laneToCoroutineDic = new Dictionary<ISpawnable, Coroutine>();
 
         public void InitSpawner()
         {
@@ -23,7 +25,8 @@ namespace CR.Core
         {
             foreach (var lane in lanesInGame)
             {
-                StartCoroutine(SpawnCarsLoop(lane));
+                var coroutine = StartCoroutine(SpawnCarsLoop(lane));
+                laneToCoroutineDic.Add(lane, coroutine);
             }
         }
 
@@ -64,6 +67,8 @@ namespace CR.Core
         {
             if (lanesInGame.Contains(item))
             {
+                StopCoroutine(laneToCoroutineDic[item]);
+                laneToCoroutineDic.Remove(item);    
                 lanesInGame.Remove(item);
             }
         }
