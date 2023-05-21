@@ -9,19 +9,19 @@ namespace CR.Gameplay
         private float highestZ;
 
 
-        public void UpdateMovement(Vector2 input)
+        public void UpdateMovement(Vector2 input, PointsSystem pointsSystem)
         {
             if (input.x > 0)
                 MoveRight();
             else if (input.x < 0)
                 MoveLeft();
             else if (input.y > 0)
-                MoveForward();
+                MoveForward(pointsSystem);
             else if (input.y < 0)
                 MoveBack();
         }
 
-        private void MoveForward()
+        private void MoveForward(PointsSystem pointsSystem)
         {
             if (!canMove)
                 return;
@@ -33,7 +33,9 @@ namespace CR.Gameplay
 
             if(endValue.z > highestZ)
             {
-
+                this.highestZ = endValue.z;
+                pointsSystem.AddPoint();
+                Debug.Log(pointsSystem.CurrentScore.ToString());
             }
 
             transform.DOJump(endValue, 1f, 1, .2f).OnComplete(EnableMovement);

@@ -21,7 +21,7 @@ namespace CR.Gameplay
 	{
 		public LaneType Type;
 		public LaneDirection Direction;
-		public int Obstacles;
+		public int obstaclesLimit;
         public bool enableAdditionalObjects;
     }
 

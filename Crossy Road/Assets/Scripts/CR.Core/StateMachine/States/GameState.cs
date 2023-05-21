@@ -11,7 +11,9 @@ namespace CR.Core
             base.Init(gameController);
             gameController.CarSpawner.InitSpawner();
             gameController.LevelSpawner.Init(2);
-            gameController.CrossyInput.isMovePressed += gameController.PlayerMovement.UpdateMovement;
+            gameController.CrossyInput.isMovePressed +=
+                (input) => gameController.PlayerMovement.UpdateMovement(input, gameController.PointsSystem);
+
 
             gameController.CrossyInput.isPausePressed += test;
         }

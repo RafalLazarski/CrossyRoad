@@ -37,6 +37,9 @@ namespace CR.Core
         private PlayerMovement playerMovement;
         public PlayerMovement PlayerMovement => playerMovement;
 
+        [SerializeField]
+        private PointsSystem pointsSystem;
+        public PointsSystem PointsSystem => pointsSystem;
 
         private void Start()
         {

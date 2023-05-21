@@ -24,15 +24,11 @@ namespace CR.Gameplay
         private Action<BaseLane> onDespawn;
         private LaneDirection direction;
         protected bool enableAdditionalObjects;
+        protected int obstaclesLimit;
 
         public void SetDirection(LaneDirection laneDirection)
         {
             this.direction = laneDirection;
-        }
-
-        public void SetAdditionalObjectsState(bool newState)
-        {
-            enableAdditionalObjects = newState;
         }
 
         public void AddListener(Action<BaseLane> callback)
@@ -86,6 +82,16 @@ namespace CR.Gameplay
         public virtual void RefreshObjectState()
         {
 
+        }
+
+        public virtual void SetAdditionalObjectsState(bool newState)
+        {
+            enableAdditionalObjects = newState;
+        }
+
+        public virtual void SetObstaclesLimit(int limit)
+        {
+            this.obstaclesLimit = limit;
         }
 
     }
