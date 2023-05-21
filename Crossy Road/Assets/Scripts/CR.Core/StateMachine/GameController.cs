@@ -43,8 +43,8 @@ namespace CR.Core
             saveSystem = new SaveSystem();
             saveSystem.LoadData();
 
-            //ChangeState(new MenuState());
-            ChangeState(new GameState());
+            ChangeState(new MenuState());
+            //ChangeState(new GameState());
         }
 
         private void Update()

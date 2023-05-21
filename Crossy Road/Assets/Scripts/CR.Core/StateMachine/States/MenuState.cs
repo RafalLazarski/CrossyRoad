@@ -9,6 +9,7 @@ namespace CR.Core
             base.Init(gameController);
             gameController.MenuView.ShowView();
             gameController.CrossyInput.isStartPressed += StartGame;
+            gameController.MenuView.UpdateScores(0, 30);
         }
 
         public override void DestroyState()

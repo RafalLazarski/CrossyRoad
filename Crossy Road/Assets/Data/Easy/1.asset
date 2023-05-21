@@ -16,7 +16,7 @@ MonoBehaviour:
   - Type: 2
     Direction: 0
     enableAdditionalObjects: 0
-  - Type: 2
+  - Type: 1
     Direction: 0
     enableAdditionalObjects: 0
   - Type: 0
@@ -30,14 +30,14 @@ MonoBehaviour:
     enableAdditionalObjects: 1
   - Type: 1
     Direction: 1
-    enableAdditionalObjects: 1
+    enableAdditionalObjects: 0
   - Type: 1
     Direction: 1
     enableAdditionalObjects: 1
-  - Type: 1
+  - Type: 2
     Direction: 0
-    enableAdditionalObjects: 1
-  - Type: 1
+    enableAdditionalObjects: 0
+  - Type: 0
     Direction: 1
     enableAdditionalObjects: 0
   - Type: 2
@@ -49,6 +49,6 @@ MonoBehaviour:
   - Type: 2
     Direction: 0
     enableAdditionalObjects: 0
-  - Type: 2
+  - Type: 0
     Direction: 1
     enableAdditionalObjects: 0
