@@ -1,6 +1,7 @@
 using System;
 using System.Xml.Schema;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CR.Gameplay
 {
@@ -10,13 +11,16 @@ namespace CR.Gameplay
         private Rigidbody carRb;
 
         [SerializeField]
-        private float speed = 10;
+        private float minSpeed = 10;
+
+        [SerializeField]
+        private float maxSpeed = 20;
 
         private Action<BaseCar> onDespawn;
 
         public void StartMovement()
         {
-            carRb.AddForce(this.transform.forward * speed, ForceMode.Impulse);
+            carRb.AddForce(this.transform.forward * Random.Range(minSpeed, maxSpeed), ForceMode.Impulse);
         }
 
         private void OnTriggerEnter(Collider other)
