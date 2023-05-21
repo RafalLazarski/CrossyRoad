@@ -1379,6 +1379,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1998322857}
+  - {fileID: 1866418197}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 36.471, y: -29.459, z: -1.539}
@@ -1394,11 +1395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c618b08813a4ab643a6d33fd695d8562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  maxSpeed: 0
-  distance: 0
-  player: {fileID: 0}
-  detector: {fileID: 0}
+  speed: 2
+  maxSpeed: 30
+  distance: 30
+  player: {fileID: 863431663}
+  detector: {fileID: 1866418197}
 --- !u!1001 &1031847649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2036,6 +2037,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7395595566317364268, guid: bc2cbfbb8e2546546b36f38abf910bb2, type: 3}
   m_PrefabInstance: {fileID: 1777932699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866418196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1866418197}
+  m_Layer: 0
+  m_Name: PlayerCollider
+  m_TagString: Despawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1866418197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866418196}
+  m_LocalRotation: {x: -0.28849894, y: 0.23479445, z: -0.07320214, w: 0.9253547}
+  m_LocalPosition: {x: -35.4, y: 27.3, z: 60.8}
+  m_LocalScale: {x: 277.99963, y: 7.8943, z: 6.6661}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -29.97, y: 33.392, z: -18.227}
 --- !u!1 &1872124617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,7 +2221,7 @@ GameObject:
   - component: {fileID: 1998322857}
   - component: {fileID: 1998322858}
   m_Layer: 0
-  m_Name: CameraCollider
+  m_Name: DespawnCollider
   m_TagString: Despawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
