@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace CR.Core
 {
@@ -10,18 +11,20 @@ namespace CR.Core
             base.Init(gameController);
             gameController.CarSpawner.InitSpawner();
             gameController.LevelSpawner.Init(2);
+            gameController.CrossyInput.isMovePressed += gameController.PlayerMovement.UpdateMovement;
 
             gameController.CrossyInput.isPausePressed += test;
         }
 
         public override void DestroyState()
         {
-
+            gameController.CrossyInput.ClearAllInputs();
         }
 
         public override void Tick()
         {
-            gameController.CameraController.MoveCamera();
+            gameController.CameraController.
+                UpdateCameraPosition();
         }
 
         public void test(bool isPressed)

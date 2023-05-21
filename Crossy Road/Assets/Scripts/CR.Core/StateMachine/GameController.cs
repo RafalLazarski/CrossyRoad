@@ -33,6 +33,10 @@ namespace CR.Core
         private CameraMovementController cameraController;
         public CameraMovementController CameraController => cameraController;
 
+        [SerializeField]
+        private PlayerMovement playerMovement;
+        public PlayerMovement PlayerMovement => playerMovement;
+
 
         private void Start()
         {

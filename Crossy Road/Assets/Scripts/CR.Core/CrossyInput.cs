@@ -34,7 +34,6 @@ namespace CR.InputSystem
 			if (ctx.performed || ctx.canceled)
 			{
                 var val = ctx.ReadValue<Vector2>();
-				Debug.Log(val);
                 isMovePressed?.Invoke(val);
             }
         }

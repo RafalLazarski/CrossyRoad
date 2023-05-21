@@ -918,6 +918,7 @@ MonoBehaviour:
   levelSpawner: {fileID: 540927260}
   carSpawner: {fileID: 1973218913}
   cameraController: {fileID: 963194229}
+  playerMovement: {fileID: 863431664}
 --- !u!4 &626825494
 Transform:
   m_ObjectHideFlags: 0
@@ -1191,6 +1192,7 @@ GameObject:
   - component: {fileID: 863431662}
   - component: {fileID: 863431661}
   - component: {fileID: 863431660}
+  - component: {fileID: 863431664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1277,6 +1279,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863431664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863431659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050a92851657b5f449bac417133babed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &872299926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7395595566317364268, guid: bc2cbfbb8e2546546b36f38abf910bb2, type: 3}
@@ -1381,6 +1395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  maxSpeed: 0
+  distance: 0
+  player: {fileID: 0}
+  detector: {fileID: 0}
 --- !u!1001 &1031847649
 PrefabInstance:
   m_ObjectHideFlags: 0

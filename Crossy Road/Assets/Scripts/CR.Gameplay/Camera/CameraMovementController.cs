@@ -7,9 +7,31 @@ namespace CR.Gameplay
 		[SerializeField]
 		private float speed;
 
-		public void MoveCamera()
-		{
-            transform.Translate(0, 0, 1 * speed * Time.deltaTime, Space.World);
+        [SerializeField]
+        private float maxSpeed;
+
+        private bool isMoving = true;
+
+        [SerializeField]
+        private float distance;
+
+        [SerializeField]
+        private Transform player;
+
+        [SerializeField]
+        private Transform detector;
+
+        public void UpdateCameraPosition()
+        {
+            if (!isMoving)
+                return;
+
+            var diff = detector.transform.position.z - player.position.z;
+            var diffNormalized = diff / distance;
+            var finalSpeed = Mathf.Lerp(maxSpeed, speed, diffNormalized);
+
+            transform.position += Vector3.forward * (finalSpeed * Time.deltaTime);
         }
-	} 
+
+    }
 }
