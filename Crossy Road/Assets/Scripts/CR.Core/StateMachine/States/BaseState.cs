@@ -4,11 +4,11 @@ namespace CR.Core
 {
 	public abstract class BaseState
 	{
-        protected GameController gameController;
+        protected GameController gc;
 
-        public virtual void Init(GameController gameController)
+        public virtual void Init(GameController gc)
         {
-            this.gameController = gameController;
+            this.gc = gc;
         }
         public abstract void Tick();
         public abstract void DestroyState();

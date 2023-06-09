@@ -14,6 +14,10 @@ namespace CR.Core
         private MenuView menuView;
         public MenuView MenuView => menuView;
 
+        [SerializeField]
+        private LoseView loseView;
+        public LoseView LoseView => loseView;
+
         private SaveSystem saveSystem;
         public SaveSystem SaveSystem => saveSystem;
 

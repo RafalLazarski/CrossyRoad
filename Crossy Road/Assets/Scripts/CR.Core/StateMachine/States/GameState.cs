@@ -6,35 +6,23 @@ namespace CR.Core
     public class GameState : BaseState
     {
 
-        public override void Init(GameController gameController)
+        public override void Init(GameController gc)
         {
-            base.Init(gameController);
-            gameController.CarSpawner.InitSpawner();
-            gameController.LevelSpawner.Init(2);
-            gameController.CrossyInput.isMovePressed +=
-                (input) => gameController.PlayerMovement.UpdateMovement(input, gameController.PointsSystem);
-
-
-            gameController.CrossyInput.isPausePressed += test;
+            base.Init(gc);
+            gc.CrossyInput.isMovePressed +=
+                (input) => gc.PlayerMovement.UpdateMovement(input, gc.PointsSystem);
+            gc.PlayerMovement.OnLose += () => gc.ChangeState(new LoseState());
         }
 
         public override void DestroyState()
         {
-            gameController.CrossyInput.ClearAllInputs();
+            gc.CrossyInput.ClearAllInputs();
         }
 
         public override void Tick()
         {
-            gameController.CameraController.
+            gc.CameraController.
                 UpdateCameraPosition();
-        }
-
-        public void test(bool isPressed)
-        {
-            if (isPressed)
-            {
-                Debug.Log("Dzia³a");
-            }
         }
     }
 }

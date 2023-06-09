@@ -38,7 +38,7 @@ namespace CR.Gameplay
 
         public virtual void PrepareForActivate()
         {
-
+            onDespawn = null;
         }
 
         public virtual void PrepareForDeactivate()

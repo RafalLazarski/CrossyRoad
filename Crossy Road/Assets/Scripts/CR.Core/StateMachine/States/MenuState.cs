@@ -5,21 +5,23 @@ namespace CR.Core
 {
     public class MenuState : BaseState
     {
-        public override void Init(GameController gameController)
+        public override void Init(GameController gc)
         {
-            base.Init(gameController);
-            gameController.MenuView.ShowView();
-            gameController.CrossyInput.isStartPressed += StartGame;
-            gameController.MenuView.UpdateScores(0, 30);
-            gameController.MenuView.UpdateScores(gameController.SaveSystem.PlayerData.BestScore,
-                gameController.SaveSystem.PlayerData.LastScore);
-            gameController.PointsSystem.Init(gameController.SaveSystem.PlayerData.BestScore);
+            base.Init(gc);
+            gc.MenuView.ShowView();
+            gc.CrossyInput.isStartPressed += StartGame;
+            gc.MenuView.UpdateScores(0,0);
+            gc.MenuView.UpdateScores(gc.SaveSystem.PlayerData.BestScore,
+                gc.SaveSystem.PlayerData.LastScore);
+            gc.PointsSystem.Init(gc.SaveSystem.PlayerData.BestScore);
+            gc.CarSpawner.InitSpawner();
+            gc.LevelSpawner.Init(2);
         }
 
         public override void DestroyState()
         {
-            gameController.MenuView.HideView();
-            gameController.CrossyInput.ClearAllInputs();
+            gc.MenuView.HideView();
+            gc.CrossyInput.ClearAllInputs();
         }
 
         public override void Tick()
@@ -31,7 +33,7 @@ namespace CR.Core
         {
             if(isPressed)
             {
-                gameController.ChangeState(new GameState());
+                gc.ChangeState(new GameState());
             }
         }
     }

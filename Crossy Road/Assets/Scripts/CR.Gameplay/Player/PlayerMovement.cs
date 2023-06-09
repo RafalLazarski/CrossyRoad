@@ -1,13 +1,18 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace CR.Gameplay
 {
 	public class PlayerMovement : MonoBehaviour
 	{
+        [SerializeField]
+        private Collider collider;
+
         private bool canMove = true;
         private float highestZ;
 
+        public Action OnLose;
 
         public void UpdateMovement(Vector2 input, PointsSystem pointsSystem)
         {
@@ -83,6 +88,15 @@ namespace CR.Gameplay
         private void EnableMovement()
         {
             canMove = true;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.collider.CompareTag("Car"))
+            {
+                this.collider.enabled = false;
+                OnLose.Invoke();
+            }
         }
     }
 }

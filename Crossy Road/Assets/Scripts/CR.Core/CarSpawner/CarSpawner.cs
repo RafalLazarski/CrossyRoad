@@ -26,17 +26,12 @@ namespace CR.Core
             while (true)
             {
                 var car = normalCarPool.GetFromPool(lane.GetSpawnPoint());
-
                 car.AddListener(DespawnCar);
-
                 car.transform.rotation = lane.GetSpawnRotation();
-
                 car.StartMovement();
 
                 var timeFrame = lane.GetTimeFrame();
-
                 var timeToNextSpawn = Random.Range(timeFrame.x, timeFrame.y);
-
                 yield return new WaitForSeconds(timeToNextSpawn);
             }
         }

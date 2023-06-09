@@ -7,21 +7,7 @@ namespace CR.Gameplay
 {
     public class BaseCar : MonoBehaviour, IPoolable
     {
-        [SerializeField]
-        private Rigidbody carRb;
-
-        [SerializeField]
-        private float minSpeed = 10;
-
-        [SerializeField]
-        private float maxSpeed = 20;
-
         private Action<BaseCar> onDespawn;
-
-        public void StartMovement()
-        {
-            carRb.AddForce(this.transform.forward * Random.Range(minSpeed, maxSpeed), ForceMode.Impulse);
-        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -37,11 +23,11 @@ namespace CR.Gameplay
         }
 
 
-        public void PrepareForActivate()
+        public virtual void PrepareForActivate()
         {
         }
 
-        public void PrepareForDeactivate()
+        public virtual void PrepareForDeactivate()
         {
             onDespawn = null;
         }
