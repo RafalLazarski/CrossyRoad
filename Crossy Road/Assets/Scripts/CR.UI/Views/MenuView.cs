@@ -8,9 +8,9 @@ namespace CR.UI
 		[SerializeField]
 		private TextMeshProUGUI score;
 
-		public void UpdateScores(int bestScore, int lastScore)
+		public void UpdateScores(int bestScore)
 		{
-			score.text = $"Best score: {bestScore}\nLast score: {lastScore}";
+			score.text = $"Best score: {bestScore}";
 
         }
 	}

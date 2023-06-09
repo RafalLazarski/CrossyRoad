@@ -51,7 +51,6 @@ namespace CR.Core
             saveSystem.LoadData();
 
             ChangeState(new MenuState());
-            //ChangeState(new GameState());
         }
 
         private void Update()

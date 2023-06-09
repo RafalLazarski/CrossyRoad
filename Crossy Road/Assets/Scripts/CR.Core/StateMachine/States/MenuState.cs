@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
@@ -10,9 +11,16 @@ namespace CR.Core
             base.Init(gc);
             gc.MenuView.ShowView();
             gc.CrossyInput.isStartPressed += StartGame;
-            gc.MenuView.UpdateScores(0,0);
-            gc.MenuView.UpdateScores(gc.SaveSystem.PlayerData.BestScore,
-                gc.SaveSystem.PlayerData.LastScore);
+            gc.MenuView.UpdateScores(0);
+            try
+            {
+                gc.MenuView.UpdateScores(gc.SaveSystem.PlayerData.BestScore);
+            }
+            catch(Exception e)
+            {
+                Debug.LogException(e);
+            }
+
             gc.PointsSystem.Init(gc.SaveSystem.PlayerData.BestScore);
             gc.CarSpawner.InitSpawner();
             gc.LevelSpawner.Init(2);

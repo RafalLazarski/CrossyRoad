@@ -40,7 +40,6 @@ namespace CR.Gameplay
             {
                 this.highestZ = endValue.z;
                 pointsSystem.AddPoint();
-                Debug.Log(pointsSystem.CurrentScore.ToString());
             }
 
             transform.DOJump(endValue, 1f, 1, .2f).OnComplete(EnableMovement);
@@ -90,9 +89,9 @@ namespace CR.Gameplay
             canMove = true;
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.collider.CompareTag("Car"))
+            if (other.CompareTag("Car") || other.CompareTag("Despawn"))
             {
                 this.collider.enabled = false;
                 OnLose.Invoke();

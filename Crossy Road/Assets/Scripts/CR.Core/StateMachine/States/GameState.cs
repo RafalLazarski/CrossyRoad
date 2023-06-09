@@ -11,7 +11,7 @@ namespace CR.Core
             base.Init(gc);
             gc.CrossyInput.isMovePressed +=
                 (input) => gc.PlayerMovement.UpdateMovement(input, gc.PointsSystem);
-            gc.PlayerMovement.OnLose += () => gc.ChangeState(new LoseState());
+            gc.PlayerMovement.OnLose += () => gc.ChangeState(new LoseState(gc.PointsSystem.CurrentScore));
         }
 
         public override void DestroyState()
